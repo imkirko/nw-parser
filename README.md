@@ -1,6 +1,6 @@
 NW Parser
 ============
-Parses levels... and thats about it
+Parse .nw files into level objects
 
 Installation
 ============
@@ -11,8 +11,21 @@ npm install nw-parser
 Example
 =======
 ```javascript
-var nw = require('nw-parser');
+const nw = require('nw-parser');
 
-var level = require('../sample/mylevel.nw');
-console.log(level.links.size);
+nw.load('./levels/myLeve.nw')
+.then(level => {
+	console.log(`Ammount of tiles: ${level.tiles.size}`);
+})
+.catch(err => {
+	console.log(`Couldn't load: ${err}`);
+});
 ```
+
+Todo
+====
+- Parse gmap files
+	- Load all levels and return them in array
+- Level Editing
+	- Adding links, npcs, etc.
+	- Saving
