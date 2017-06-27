@@ -1,18 +1,17 @@
 {
 	"name": "nw-parser",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Parse nw files",
 	"private": false,
 	"main": "index.js",
+	"scripts": {
+		"test": "test/test.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/imkirko/nw-parser.git"
 	},
-	"keywords": [
-		"graal",
-		"nw",
-		"level"
-	],
+	"keywords": ["graal", "nw", "level", "parse", "gmap"],
 	"author": "Kirko <kirko1029@gmail.com>",
 	"license": "Apache-2.0",
 	"bugs": {
