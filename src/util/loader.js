@@ -3,6 +3,8 @@ const fs        = require('fs');
 const constants = require('./constants');
 const Level     = require('../level/level');
 const Tile      = require('../level/tile');
+const Link      = require('../level/link');
+const Sign      = require('../level/sign');
 
 /**
  * Parses file into Level object
@@ -36,7 +38,7 @@ function load(file, options = {}) {
 			// Check level signature
 			if (!firstLine) {
 				if (line === 'GRMAP001') return reject(`GMAPs aren't supported at the moment`);
-				if (line !== 'GLEVNW01') return reject('Wrong signature');
+				if (line !== 'GLEVNW01') return reject(`This isn't a level file`);
 				firstLine = true;
 			}
 
@@ -51,7 +53,19 @@ function load(file, options = {}) {
 			}
 
 			// Links
+			else if (line.startsWith('LINK')) {
+				let [targetLevel, sourceX, sourceY, width, height, targetX, targetY] = line.split(' ');
+
+				level.links.add(new Link(sourceX, sourceY, width, height, targetX, targetY, targetLevel));
+			}
+
 			// Signs
+			else if (line.startsWith('CHEST')) {
+				let [x, y, item, signIndex] = line.split(' ');
+
+				level.signs.add(new Sign(x, y, item, signIndex));
+			}
+
 			// Baddies
 			// Chest
 			// NPCs
