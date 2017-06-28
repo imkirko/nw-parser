@@ -4,18 +4,16 @@ class Sign {
 	 * Create new sign
 	 * @param {int} x
 	 * @param {int} y
-	 * @param {string} item - Item name or index
-	 * @param signIndex
+	 * @param {string} [text]
 	 */
-	constructor(x, y, item, signIndex) {
-		if (arguments.length < 4) {
+	constructor(x, y, text='') {
+		if (arguments.length < 2) {
 			throw new Error('Missing arguments');
 		}
 
 		this.x = x;
 		this.y = y;
-		this.item = item;
-		this.signIndex = signIndex;
+		this.text = text;
 	}
 }
 

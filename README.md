@@ -13,7 +13,7 @@ Example
 ```javascript
 const nw = require('nw-parser');
 
-nw.load('./levels/myLeve.nw')
+nw.load('./levels/myLevel.nw')
 .then(level => {
 	console.log(`Ammount of tiles: ${level.tiles.size}`);
 })
