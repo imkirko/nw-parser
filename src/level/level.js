@@ -46,7 +46,8 @@ class Level {
 	}
 
 	toString() {
-		// todo:
+		let text = 'GLEVNW01\n';
+		// todo: convert to text
 	}
 }
 

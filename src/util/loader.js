@@ -50,7 +50,7 @@ function load(file, options = {}) {
 			}
 
 			// Check if reading for data
-			if (reading) {
+			else if (reading) {
 				if (line.startsWith(reading)) {
 					if (reading === 'SIGNEND') {
 						level.signs.last().text = contents.trim();
@@ -63,7 +63,7 @@ function load(file, options = {}) {
 						baddy.winVerse    = bInfo[2];
 
 						bCount = 0;
-						bInfo = [];
+						bInfo  = [];
 					}
 
 					contents = '';
@@ -71,7 +71,7 @@ function load(file, options = {}) {
 				} else {
 					if (reading === 'BADDYEND') {
 						bInfo.push(line);
-						bCount ++;
+						bCount++;
 					} else {
 						contents += `${line}\n`;
 					}
@@ -126,6 +126,10 @@ function load(file, options = {}) {
 				reading = 'BADDYEND';
 			}
 
+			// Level is fucked up
+			else {
+				throw new Error(`Can't read line, ${line}`);
+			}
 		});
 
 		rl.on('close', () => {
